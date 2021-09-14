@@ -1,18 +1,32 @@
 Airbnb listings in San Diego, CA, USA
 ================
 
+-   [attribution](#attribution)
+-   [background](#background)
+-   [learning goals](#learning-goals)
+-   [getting help](#getting-help)
+-   [getting started](#getting-started)
+    -   [Git](#git)
+    -   [Rmarkdown](#rmarkdown)
+    -   [working with Git and GitHub from
+        Rstudio](#working-with-git-and-github-from-rstudio)
+-   [assignment](#assignment)
+    -   [workflow](#workflow)
+    -   [project goal](#project-goal)
+    -   [project requirements](#project-requirements)
+
 <img src="img/shutterstock_187918175.jpg" width="1500" style="display: block; margin: auto;" />
 
-#### attribution
+## attribution
 
-  - Inspiration and baseline materials for this exercise are derived
+-   Inspiration and baseline materials for this exercise are derived
     from the [Materials for the Designing the Data Science
     Classroom](https://rstudio-conf-2020.github.io/design-ds-classroom/)
     workshop by Mine Çetinkaya-Rundel at rstudio::conf(2020).
-  - The data for this exercise are provided by
+-   The data for this exercise are provided by
     [Airbnb](http://insideairbnb.com/get-the-data.html).
 
-#### background
+## background
 
 Recent developments in San Diego, CA, USA regarding the growth of Airbnb
 and its impact on the housing, rental, and hospitality markets require a
@@ -20,28 +34,31 @@ better understanding of the Airbnb listings. Using data provided by
 Airbnb, we can explore how Airbnb rentals vary by neighborhood among
 other relationships.
 
-#### learning goals
+## learning goals
 
 The goal of this exercise is not to conduct a thorough analysis of
-Airbnb listings but rather to use the data to introduce the R language,
-working in the RStudio environment, and accessing and managing files
-with Git and GitHub.
+Airbnb listings nor to learn to program with R but rather to (1) access
+and manage a project with Git and GitHub, and (2) use the Airbnb data in
+an Rmarkdown setting to explore the utility of literate programming that
+blends our code and storytelling.
 
-#### getting help
+## getting help
 
 If you have any questions about the exercise or assignment, please post
 them as issues to the
 [rdm-community](https://github.com/SOS598-RDM/rdm-community/issues)
 repository on the course GitHub organization.
 
------
+------------------------------------------------------------------------
 
-#### getting started: clone the repository and configure Git
+## getting started
+
+### Git
 
 The next few steps will walk you through the process of cloning the
 repository using RStudio.
 
-##### 1\. obtain URL of the repository to be cloned
+#### obtain URL of the repository to be cloned
 
 In GitHub, click on the green **Clone or download** button, select **Use
 HTTPS** (this might already be selected by default; if so you will see
@@ -50,33 +67,35 @@ icon to copy the URL of the repository.
 
 <img src="img/github-clone-link.png" width="430" />
 
-##### 2\. clone the repository to your computer using RStudio
+#### clone the repository to your computer using RStudio
 
-2a. From the **Project** tab (top-right corner), create a **New
-Project**
+##### From the **Project** tab (top-right corner), create a **New Project**
 
 <img src="img/rstudio-project-tab.png" width="257" />
 
-2b. Create a new project using **Version Control**
+##### Create a new project using **Version Control**
 
 <img src="img/rstudio-create-project.png" width="537" />
 
-2c. Clone the project from a Git repository
+##### Clone the project from a Git repository
 
 <img src="img/rstudio-project-git.png" width="534" />
 
-2d. Provide relevant details for the project:
+##### Provide relevant details for the project:
 
-  - the URL that you copied from GitHub
-  - the repository name is provided by default as the name of the
+-   the URL that you copied from GitHub
+-   the repository name is provided by default as the name of the
     project (you can edit this but it is best to use the repository name
     (default))
-  - select a location (on your computer) where the repository will be
+-   select a location (on your computer) where the repository will be
     cloned
 
 <img src="img/rstudio-project-dialogue.png" width="580" />
 
-##### 3\. configure Git
+#### configure Git
+
+You may have already configured Git if you have been following along in
+class but address the following steps if not already done.
 
 We need to configure RStudio so that it can communicate with GitHub.
 This requires two pieces of information: your email address and your
@@ -90,25 +109,25 @@ user name) and `your.email@address.com` must be the email address that
 you used to establish your GitHub account):
 
 ``` r
-usethis::use_git_config(user.name = "your name", 
-                        user.email = "your.email@address.com")
+usethis::use_git_config(
+  user.name = "your name", 
+  user.email = "your.email@address.com"
+)
 ```
 
-If you encounter the error `Error in use_get_config() : could not find
-function "use_get_config"` when running `use_git_config`, install the
-usethis package by typing `install.packages("usethis")` into the R
-console then rerun.
+If you encounter the error
+`Error in use_get_config() : could not find function "use_get_config"`
+when running `use_git_config`, install the usethis package by typing
+`install.packages("usethis")` into the R console then rerun.
 
------
+------------------------------------------------------------------------
 
-#### Rmarkdown and Git/GitHub
-
-*Rmarkdown*
+### Rmarkdown
 
 R Markdown is a file format for making dynamic documents with R. An R
 Markdown document is written in markdown (an easy-to-write plain text
-format) and contains chunks of embedded R code
-([Grolemund 2014](https://rmarkdown.rstudio.com/articles_intro.html)).
+format) and contains chunks of embedded R code ([Grolemund
+2014](https://rmarkdown.rstudio.com/articles_intro.html)).
 
 <img src="img/chunk.png" width="1191" />
 
@@ -116,7 +135,7 @@ All of the code in a Rmd document can be run sequentially by knitting
 the document or chunks of code can be run individually by clicking the
 play button on a given chunk.
 
-*YAML*
+#### YAML
 
 The top portion of a R Markdown file (between the three dashed lines) is
 called YAML (Yet Another Markup Language), a reasonably friendly data
@@ -132,7 +151,7 @@ output: github_document
 ---
 ```
 
-*Knit*
+#### Knitting
 
 Open the R Markdown (.Rmd) file in your project then change the author
 name to your name and date to today’s date. Knit the document with the
@@ -148,7 +167,9 @@ together the text and code detailed in the .Rmd document. After
 knitting, we should see changes to both the source .Rmd and resulting
 output file reflected in the Git pane of Rstudio (top-right corner).
 
-*Git: staging*
+### working with Git and GitHub from Rstudio
+
+#### staging
 
 With RStudio, we interact with Git and GitHub through the Git pane
 (usually the top-right panel). An empty pane indicates that changes have
@@ -163,14 +184,14 @@ the corresponding staged checkbox.
 
 <img src="img/rstudio-git-stage.png" width="723" />
 
-*Git: viewing changes*
+#### viewing changes
 
 In the Git pane, click on the .Rmd or output to file select it then
 click on **Diff**. This shows you the *diff*erence between the last
 committed state of the document and its current state that includes your
 changes.
 
-*Git: commiting*
+#### committing
 
 When ready, we can commit a snapshot of the project state after staging
 the files we want to commit (with the stage toggle option), adding a
@@ -183,7 +204,7 @@ become cumbersome and result in an abundance of potentially trivial
 commits. Consider committing project snapshots that are meaningful to
 you for inspection, comparison, or restoration.
 
-*pushing to GitHub*
+#### pushing to GitHub
 
 After making a commit, we have the option to push the project at that
 state to the project repository on GitHub. As with committing, you do
@@ -200,9 +221,11 @@ password for every GitHub action -
 these at your convenience but the user name and password approach will
 work in the meantime.
 
------
+------------------------------------------------------------------------
 
-#### assignment
+# assignment
+
+## workflow
 
 Details of a workflow nearly identical to what you will do for your
 assignment are described below, but address your assignment in the
@@ -211,38 +234,51 @@ repository created for you.
 *packages*
 
 In addition to the functionality provided by base R, we will use tools
-provided in a package called tidyverse. Once installed, load the package
-so that its functionality is available by calling the library.
+provided in the `dplyr`, `ggplot2`, and `forcats` packages. Once
+installed, load the package so that its functionality is available by
+calling the library. Note that these packages must be installed before
+use. If not installed, you can install a package by typing
+`install.packages("pacakge-name")` in the the R console.
 
 ``` r
-library(package = tidyverse)
+library(package = dplyr)
+library(package = ggplot2)
+library(package = forcats)
 ```
 
 *getting the data*
 
 We will use data provided by
 [Airbnb](http://insideairbnb.com/get-the-data.html). Here, we can use
-the url function wrapped by the read.csv function to import the data
+the `url` function wrapped by the read.csv function to import the data
 from Airbnb.
 
-  - Note that we are not downloading the data to a file but rather
+-   Note that we are not downloading the data to a file but rather
     reading them directly into our R environment. For a reproducible
     workflow, we would probably want to download and save a copy of
     these data in case they change or become unavailable but we merely
     refer to Airbnb for this one-time assignment.
-  - Note the `stringsAsFactors = FALSE` argument we pass to the read.csv
+-   Note the `stringsAsFactors = FALSE` argument we pass to the read.csv
     function to prevent it from converting any data columns that contain
-    strings to factors.
-  - Note that this URL is specific to San Diego, CA but your assignment
-    will focus on a different
-location
-
-<!-- end list -->
+    strings to factors (UPDATE: as of R 4.0.0, `stringsAsFactors`
+    defaults to false (but we will keep it in the code to be explicit)).
 
 ``` r
-listings <- read.csv(url('http://data.insideairbnb.com/united-states/ca/san-diego/2019-11-21/visualisations/listings.csv'),
-                     stringsAsFactors = FALSE)
+listings <- read.csv(
+  url('http://data.insideairbnb.com/united-states/ca/san-diego/2021-07-14/visualisations/listings.csv'),
+  stringsAsFactors = FALSE
+)
 ```
+
+We could include the above code to access the Airbnb data as a chunk in
+our Rmarkdown document, which would work fine, but will instead call
+that code by sourcing the same logic contained in another file
+(`download_data.R`). This demonstrates the tremendous flexibility we
+have in terms of structuring our project. Note, however, that the
+Rmarkdown document is essentially its own environment and, thus, we must
+call the function to access the data (even though it is in another file)
+from within the Rmarkdown document so that the `listings` object is
+available as an object to other code within our Rmarkdown environment.
 
 *data structure*
 
@@ -264,29 +300,31 @@ the data frame using the `names()` function as below.
 names(listings)
 ```
 
-The data variables and their descriptions are provided below:
+The data variables and their descriptions are provided below, but note
+that these variables are detailed based on data accessed in November
+2019 and are subject to change:
 
-  - `id`: listing id
-  - `review_scores_location`: 0-5 stars converted into a 0-10 scale
-  - `name`: listing name
-  - `host_id`: host id
-  - `host_name`: host name
-  - `neighbourhood_group`: ?
-  - `neighbourhood`: neighbourhood
-  - `latitude`: listing latitude
-  - `longitude`: listing longitude
-  - `room_type`: type of listing (Entire home/apt, Private room, Shared
+-   `id`: listing id
+-   `review_scores_location`: 0-5 stars converted into a 0-10 scale
+-   `name`: listing name
+-   `host_id`: host id
+-   `host_name`: host name
+-   `neighbourhood_group`: ?
+-   `neighbourhood`: neighbourhood
+-   `latitude`: listing latitude
+-   `longitude`: listing longitude
+-   `room_type`: type of listing (Entire home/apt, Private room, Shared
     room)
-  - `price`: listing price
-  - `minimum_nights`: required minimum nights stay
-  - `number_of_reviews`: total number of reviews
-  - `last_review`: date of last review
-  - `reviews per month`: average number of reviews per month
-  - `calculated_host_listings_count`: total number of listings for this
+-   `price`: listing price
+-   `minimum_nights`: required minimum nights stay
+-   `number_of_reviews`: total number of reviews
+-   `last_review`: date of last review
+-   `reviews per month`: average number of reviews per month
+-   `calculated_host_listings_count`: total number of listings for this
     host
-  - `availability_365`: number of days listing is available out of 365
+-   `availability_365`: number of days listing is available out of 365
 
-##### project goal: identify neighbourhoods with highest rental rates
+## project goal
 
 We want to identify neighborhoods with the highest rental rates. We will
 start by examining the rental rates (`price`) data.
@@ -319,8 +357,10 @@ changing the second number in the vector that is passed to the ylim
 argument.
 
 ``` r
-hist(x = listings$price,
-     ylim = c(0, 1000))
+hist(
+  x = listings$price,
+  ylim = c(0, 1000)
+)
 ```
 
 Do we want to exclude the exceptionally high rental rates from our
@@ -332,11 +372,16 @@ listings <- listings %>%
 ```
 
 The code above will overwrite our existing listings data frame with a
-revised data frame of the same name but where records with a price \>
+revised data frame of the same name but where records with a price &gt;
 4000 excluded. You can adjust the threshold at which data are removed
 based on the value of price by editing the value passed to filter. Note,
-though, that we overwrite listings each time we run this code so you may
-need to redownload the data.
+though, that we overwrite listings each time we run this code so you
+will need to (re)download the data (by knitting the document or
+rerunning that particular chunk) every time that you alter the data by
+filtering.
+
+*Note that this should be the only point in the exercise where you will
+need to manipulate R code*.
 
 Filter the data then rerun the histogram(s) on the filtered data set.
 
@@ -390,9 +435,9 @@ listings %>%
   ylab("mean price per night")
 ```
 
------
+------------------------------------------------------------------------
 
-#### project requirements
+## project requirements
 
 Read the instructions for your assignment in the README of your
 assignment repository. Complete your work in the R markdown document
@@ -402,14 +447,20 @@ Before doing any work, first open the Rmd and Knit it to make sure that
 it compiles without errors. The output will have the same file name but
 the file extension will be `.md`.
 
-Edit the code Rmd, including whether to and at what threshold to filter
-data, based on your assessment of the data. Provide answers to questions
-Q1 and Q2 based on your assessment.
+Edit the code in the Rmd as appropriate, including whether to and at
+what threshold to filter data based on your assessment of the data.
+Provide answers to questions Q1 and Q2 based on the templated workflow.
 
 Final output should be:
 
-1.  Rmd with your final code and responses to questions Q1 and Q2.
-2.  the knitted document (will knit to filetype md), which should
+1.  Rmd with your final code and responses to questions Q1, Q2, and Q3.
+2.  The knitted document (will knit to file type md), which should
     feature the table and plot you produced documenting the five
     neighborhoods with the highest rental rates.
-3.  push the finished project to your assignment repository on GitHub.
+3.  Push the finished project to your assignment repository on GitHub.
+4.  Notified the instructor of your submission by creating an issue (be
+    sure to @mention the instructor in the body of the issue).
+
+Note that when viewing the .md file pushed to GitHub, the text, tables,
+and figures should be rendered properly (i.e., you should not see broken
+links, or empty boxes where you would expect a table or figure).

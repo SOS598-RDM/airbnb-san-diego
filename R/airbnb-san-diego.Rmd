@@ -6,12 +6,13 @@ output: github_document
 ---
 
 ```{r libraries, echo=FALSE, message=FALSE}
-library(package = tidyverse)
+library(package = dplyr)
+library(package = ggplot2)
+library(package = forcats)
 ```
 
-```{r data-import, echo=FALSE}
-listings <- read.csv(url('http://data.insideairbnb.com/united-states/ca/san-diego/2019-11-21/visualisations/listings.csv'),
-                     stringsAsFactors = FALSE)
+```{r data-import, echo=FALSE, eval=TRUE}
+source("download_data.R")
 ```
 
 ##### data frame: structure
@@ -41,8 +42,10 @@ hist(x = log1p(x = listings$price))
 ##### histogram: Airbnb listings price (ln+1 transformed), contrained y-axis
 
 ```{r histogram-log-price-ylim, echo=FALSE}
-hist(x = listings$price,
-     ylim = c(0, 1000))
+hist(
+  x = listings$price,
+  ylim = c(0, 1000)
+)
 ```
 
 ```{r filter-price, echo=FALSE}
@@ -82,7 +85,8 @@ listings %>%
   mutate(neighbourhood = fct_reorder(.f = neighbourhood, .x = priceMean, .desc = TRUE)) %>% 
   # call the ggplot function and create a blank canvas with neighbourhood and priceMean as the input data
   ggplot(aes(x = neighbourhood, y = priceMean)) +
-  # add bars to reflect priceMean; stat = 'identity' tells geom_bar to make the bar heights correspond to the y variable (priceMean) that we called above
+  # add bars to reflect priceMean; stat = 'identity' tells geom_bar to make the
+  # bar heights correspond to the y variable (priceMean) that we called above
   geom_bar(stat = 'identity') +
   # add error bars based on the standard errors we calculated earlier
   geom_errorbar(aes(ymin = priceMean - priceSE, ymax = priceMean + priceSE), width = 0.5) +
@@ -92,10 +96,10 @@ listings %>%
   ylab("mean price per night")
 ```
 
-##### Q1: did filtering the data change which neighborhoods were identified as having the highest rental rates? 
+##### Q1: Did filtering the data change which neighborhoods were identified as having the highest rental rates? 
 
 YOUR RESPONSE FOR Q1 GOES HERE.
 
-##### Q2: ultimately, did you filter the data, why or why not?
+##### Q2: Ultimately, did you filter the data, why or why not?
 
 YOUR RESPONSE FOR Q2 GOES HERE.
