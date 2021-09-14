@@ -280,6 +280,10 @@ call the function to access the data (even though it is in another file)
 from within the Rmarkdown document so that the `listings` object is
 available as an object to other code within our Rmarkdown environment.
 
+``` r
+source("download_data.R")
+```
+
 *data structure*
 
 Once loaded, observe that an object called `listings` has been added to

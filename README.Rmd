@@ -188,7 +188,7 @@ listings <- read.csv(
 
 We could include the above code to access the Airbnb data as a chunk in our Rmarkdown document, which would work fine, but will instead call that code by sourcing the same logic contained in another file (`download_data.R`). This demonstrates the tremendous flexibility we have in terms of structuring our project. Note, however, that the Rmarkdown document is essentially its own environment and, thus, we must call the function to access the data (even though it is in another file) from within the Rmarkdown document so that the `listings` object is available as an object to other code within our Rmarkdown environment.
 
-```{r data-import-from-source, echo=FALSE, eval=FALSE}
+```{r data-import-from-source, eval=FALSE}
 source("download_data.R")
 ```
 
